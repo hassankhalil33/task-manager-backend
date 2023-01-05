@@ -38,13 +38,13 @@ export class UserService {
       where: {
         id: +id
       },
-      select: {
-        id: true,
-        email: true,
-        updatedAt: true,
-        createdAt: true
+      include: {
+        tasksAssigned: true,
+        tasksCreated: true
       }
     })
+
+    delete user.password;
 
     if (decodedUser.email !== user.email && decodedUser.level == "NORMAL") {
       throw new UnauthorizedException();

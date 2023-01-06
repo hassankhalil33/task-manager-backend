@@ -26,37 +26,51 @@
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
+This is simple yet complex backend application using NestJS, PostgreSQL, and Prisma.
+
+## Features
+
+- User Login and Registration (Normal/ Admin/ Super Admin)
+- Full User CRUD (Create Read Update Delete)
+- Full Task CRUD (Create Read Update Delete)
+- Special Super Admin Abilities (Delete Users / Update Users / Give Admin Permission / Tasks ...)
+- Users can Create Tasks and Assign them to others.
+- Deleted Users will vacate their task, and the taks can be assigned to others.
+- Pagination for the Tasks.
+- Filtering by Status or Assignee for the Tasks.
+- Full Jest E2E Testing for both Normal and Super Admin Users, for all endpoints.
+
 ## Installation
 
 ```bash
 $ npm install
 ```
 
+## Import Database Located in db/
+
+## Rename .env.example to .env and Add Your Credentials.
+
 ## Running the app
 
 ```bash
-# development
-$ npm run start
-
 # watch mode
 $ npm run start:dev
-
-# production mode
-$ npm run start:prod
 ```
 
 ## Test
 
 ```bash
-# unit tests
-$ npm run test
-
 # e2e tests
 $ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
 ```
+
+## Users
+
+SUPER_ADMIN: Hassan@gmail.com || Hassan33
+
+## Frontend
+
+Download the Frontend Repo from [task-manager-frontend](https://github.com/hassankhalil33/task-manager-frontend)
 
 ## Support
 

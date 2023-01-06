@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException, UnauthorizedException } from '@nestjs/common';
 import { Request } from 'express';
-import { PrismaService } from 'prisma/prisma.service';
+import { PrismaService } from '../../prisma/prisma.service';
 import { TaskCreateDto } from './dtos/taskcreate.dto';
 import { TaskUpdateDto } from './dtos/taskupdate.dto';
 import { Status } from '@prisma/client';

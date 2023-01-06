@@ -51,7 +51,7 @@ export class TaskService {
   async createTask(req: Request, taskDto: TaskCreateDto) {
     const decodedUser = req.user as { id: string; email: string; level: string }
 
-    await this.prisma.task.create({
+    const task = await this.prisma.task.create({
       data: {
         title: taskDto.title,
         description: taskDto.description,
@@ -60,7 +60,7 @@ export class TaskService {
       }
     })
 
-    return { message: "task created successfully" }
+    return { task }
   }
 
   async updateTask(req: Request, taskDto: TaskUpdateDto) {

@@ -21,7 +21,8 @@ export class UserService {
     const allUsers = await this.prisma.user.findMany({
       select: {
         id: true,
-        email: true
+        email: true,
+        userType: true
       }
     })
 
@@ -70,6 +71,10 @@ export class UserService {
       }
     })
 
+    if (!userToUpdate) {
+      throw new NotFoundException("user not found");
+    }
+
     if (userToUpdate.userType === "SUPER_ADMIN") {
       throw new UnauthorizedException();
     }
@@ -102,6 +107,10 @@ export class UserService {
         id: +userDto.id
       }
     })
+
+    if (!userToUpdate) {
+      throw new NotFoundException("user doesnt exist");
+    }
 
     if (userToUpdate.userType === "SUPER_ADMIN") {
       throw new UnauthorizedException();

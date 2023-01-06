@@ -19,14 +19,16 @@ export class AuthService {
     }
 
     const hashedPassword = await this.hashPassword(password);
-    await this.prisma.user.create({
+    const user = await this.prisma.user.create({
       data: {
         email: email,
         password: hashedPassword
       }
     })
 
-    return { message: "registered successfully" };
+    delete user.password;
+
+    return { user };
   }
 
   async login(authDto: AuthDto) {

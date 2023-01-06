@@ -33,7 +33,8 @@ describe('Authentication (e2e)', () => {
       })
       .expect(201)
       .then((res) => {
-        expect(res.body.message).toEqual("registered successfully")
+        expect(res.body.user).toBeDefined();
+        expect(res.body.user.email).toEqual(email);
       })
   });
 
@@ -46,7 +47,7 @@ describe('Authentication (e2e)', () => {
       })
       .expect(201)
       .then((res) => {
-        expect(res.body.token).toBeDefined
+        expect(res.body.token).toBeDefined();
       })
   });
 });

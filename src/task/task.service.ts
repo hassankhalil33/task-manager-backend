@@ -3,13 +3,29 @@ import { Request } from 'express';
 import { PrismaService } from 'prisma/prisma.service';
 import { TaskCreateDto } from './dtos/taskcreate.dto';
 import { TaskUpdateDto } from './dtos/taskupdate.dto';
+import { Status } from '@prisma/client';
 
 @Injectable()
 export class TaskService {
   constructor(private prisma: PrismaService) { }
 
-  async getAllTasks() {
-    const allTasks = await this.prisma.task.findMany()
+  async getAllTasks(query: { page: string; status: Status; assignee: string }) {
+    const perPage = 10; //could be changed or asked from frontend
+
+    const allTasks = await this.prisma.task.findMany({
+      where: {
+        status: {
+          equals: query.status
+        },
+
+        assigneeId: {
+          equals: query.assignee && +query.assignee
+        }
+      },
+
+      skip: query.page ? (+query.page - 1) * perPage : 0,
+      take: perPage
+    })
 
     if (!allTasks) {
       throw new NotFoundException("no tasks found");

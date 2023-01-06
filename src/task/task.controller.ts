@@ -1,4 +1,4 @@
-import { Controller, Get, UseGuards, Post, Put, Delete, Param, Req, Body } from '@nestjs/common';
+import { Controller, Get, UseGuards, Post, Put, Delete, Param, Req, Body, Query } from '@nestjs/common';
 import { JwtAuthGuard } from 'src/auth/jwt.guard';
 import { TaskCreateDto } from './dtos/taskcreate.dto';
 import { TaskUpdateDto } from './dtos/taskupdate.dto';
@@ -10,8 +10,8 @@ export class TaskController {
   constructor(private readonly taskService: TaskService) { }
 
   @Get()
-  getAllTasks() {
-    return this.taskService.getAllTasks();
+  getAllTasks(@Query() query: any) {
+    return this.taskService.getAllTasks(query);
   }
 
   @Get("/:id")

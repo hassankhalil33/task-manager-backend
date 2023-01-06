@@ -31,6 +31,7 @@ This is simple yet complex backend application using NestJS, PostgreSQL, and Pri
 ## Features
 
 - User Login and Registration (Normal/ Admin/ Super Admin)
+- JWT Security Token for all users.
 - Full User CRUD (Create Read Update Delete)
 - Full Task CRUD (Create Read Update Delete)
 - Special Super Admin Abilities (Delete Users / Update Users / Give Admin Permission / Tasks ...)
